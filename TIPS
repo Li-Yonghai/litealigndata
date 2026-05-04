@@ -1,0 +1,58 @@
+1.增加子模块
+    git submodule add <remote repo url> <local repo url>
+    在当前目录上生成.gitmodules
+    
+    主库中增加子模块
+    git add . git commit -m ""
+    
+    git push origin dev:dev
+2.1.主仓库更新子模块中仓库中的修改
+    子模块仓库中增加文件
+    git status
+    git add .
+    git commit -m ""
+    git push
+    主仓库
+    cd moduleA
+    git checkout master
+    git pull
+    cd ..
+    git add .
+    git commit -m ""
+    git push
+
+2.2 子模块中更新主仓库中仓库中的修改
+    主仓库
+    cd ModuleA
+    ...
+    git add .
+    git commit -m ""
+    git push
+    cd ..
+    git add .
+    git commit -m ""
+    git push
+
+3. setup global name, email
+    git config --global user.name "liyonghai2"  &&  
+    git config --global user.email "*@189.cn"
+
+sudo sudo docker stop $(sudo docker ps -a -q) 
+sudo docker rm $(sudo docker ps -a -q)  
+sudo docker images
+sudo 
+sudo docker rmi 
+
+git config --global user.email "189@189.cn"
+git config --global user.name "liyonghai2"
+git branch -a
+git checkout --orphan new_branch
+git branch -a
+git add -A
+git commit -am "Unify commit authors"
+git status
+git branch -D master
+git branch -a
+git branch -m master
+git branch -a
+git push -f origin master

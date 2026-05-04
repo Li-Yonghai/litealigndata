@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<aligndataMODEL name="aligndataMode">
+
+  <DimensionalFile name="matches_table" sourceType="csv" path="Example/">
+     <FileColumn name="flows" type="AUTO_ByteArray" colidx="1"></FileColumn>
+  </DimensionalFile>
+
+  <Interface name="litealigndata_if3">
+    <Table  tablename = "Example" csvheadFlag="true" fileNum="10" interval="5" name="Example_Feed_File" rowNum="10" seedfile="Example/seedfile/Example_Feed_File.csv" seedfileReadlineOrWhole="true" tableType="example" tableid="0">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+        </Struct>
+      </Head>
+      <Body name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">
+          <Column  genFuncName="None" name="flow_timestamp" type="AUTO_RealTime"/>
+          <Column  genFuncName="Merge" name="Router_GID" type="AUTO_UINT64" >
+              <SubColumn name="vlaue1" type="AUTO_UINT32" bitlen="32" genFuncName="random">
+                  <parameter name="SourceType">DefaultValue</parameter>
+                  <parameter name="value">4</parameter>
+              </SubColumn>
+              <SubColumn name="vlaue2" type="AUTO_UINT32" bitlen="32" genFuncName="random">
+                  <parameter name="SourceType">DefaultValue</parameter>
+                  <parameter name="value">3</parameter>
+              </SubColumn>
+          </Column>
+          <Column  genFuncName="None" name="Collector_ID" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_IPv4" type="AUTO_ByteArray"/>
+          <Column  genFuncName="random" name="Destination_IPv6" type="AUTO_ByteArray" >
+                <parameter name="SourceType">file</parameter>
+                <parameter name="value">matches_table[flows]</parameter>
+          </Column>
+          <Column genFuncName="random" name="Destination_Port" type="AUTO_UINT64" >
+                <parameter name="SourceType">DefaultValue</parameter>
+                <parameter name="value">666,777,888</parameter>
+          </Column>
+          <Column genFuncName="random" name="Destination_VLAN" type="AUTO_UINT64" >
+              <parameter name="SourceType">NatureRandom</parameter>
+              <parameter name="Lowrange">17000000</parameter>
+              <parameter name="Highrange">17000100</parameter>
+          </Column>
+          <Column genFuncName="None" name="Destination_Flow" type="AUTO_ByteArray"/>
+          <Column genFuncName="None" name="Destination_City" type="AUTO_ByteArray"/>
+          <Column genFuncName="None" name="Destination_Region" type="AUTO_ByteArray"/>
+          <Column genFuncName="None" name="Destination_Country" type="AUTO_ByteArray"/>
+          <Column genFuncName="accumulate" name="Destination_Origin" type="AUTO_UINT64" >
+              <parameter name="prefix">0</parameter>
+                <parameter name="init">100000000</parameter>
+              <parameter name="step">1</parameter>
+          </Column>
+          <Column genFuncName="random" name="Destination_Peer" type="AUTO_UINT64" >
+                <parameter name="SourceType">PseudoRandom</parameter>
+                <parameter name="Lowrange">18000000</parameter>
+                <parameter name="Highrange">18000100</parameter>
+          </Column>
+          <Column  genFuncName="None" name="Destination_ASPath" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_BGP_Communities" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Adjacent_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Next_Hop_Address" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Route_Prefix" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Route_Matches" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Route_Local_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Route_AS_Distance" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Destination_Route_AS_Path_Length" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Destination_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_IPv4_Address" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_IPv6_Address" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Port" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_VLAN" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_Flow" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_City" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Region" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Country" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Origin_ASN" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_Peer_ASN" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_ASPath" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Communities" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Address" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Prefix" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Matches" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source_Distance" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_Length" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Source_ASes" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Class_Flags" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Ingress_Interface" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Egress_Interface" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Bytes_Sent" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Packets_Sent" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Scale_Factor" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Version" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Flags" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Protocol" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Service" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Live" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Labels" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Address" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Ingress" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Egress" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Transit" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Backbone" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Dropped" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Ignore" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="SP_MO_Match_In" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="SP_MO_Match_Out" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Local" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Source" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="PE" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Multicast" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Crossed_In" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Crossed_Out" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Router" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Applications" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Input_Interface" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Output_Interface" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Types" type="AUTO_ByteArray"/>
+        </Struct>
+      </Body>
+    </Table>
+      <Table TableName="1Example" fileNum="10" interval="5" name="Example_Feed_File1" rowNum="10" seedfile="Example/seedfile/Example_Feed_File1.csv" seedfileReadlineOrWhole="false" tableType="example1" tableid="1">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+        </Struct>
+      </Head>
+      <Body name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">        
+          <Column  genFuncName="None" name="flow_timestamp" type="AUTO_RealTime_ms"/>
+          <Column  genFuncName="random" name="Router_GID" type="AUTO_UINT64">
+                <parameter name="sourcetype">table</parameter>
+                <parameter name="value">Example_Feed_File[Destination_Port]</parameter>      
+          </Column>
+          <Column  genFuncName="None" name="Collector_ID" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_IPv4" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_IPv6" type="AUTO_ByteArray"/>
+          <Column genFuncName="random" name="Destination_Port" type="AUTO_UINT64" >
+              <parameter name="SourceType">NatureRandom</parameter>
+              <parameter name="Lowrange">17000000</parameter>
+              <parameter name="Highrange">17000100</parameter>
+          </Column>
+          <Column  genFuncName="None" name="Destination_VLAN" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="Destination_Flow" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_City" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="Destination_Region" type="AUTO_ByteArray"/>
+        </Struct> 
+      </Body>
+    </Table>
+  </Interface>
+</aligndataMODEL>

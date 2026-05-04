@@ -1,0 +1,158 @@
+{
+	"version": 1.0,
+	"protocols": "Ctrldata_stats",
+	"tableid": 3,
+	"local_key_pos": "0xFFFE",
+	"head":
+	[
+        {
+            "name": "version",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+        {
+            "name": "table_id",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },        
+        {
+            "name": "entry_size",
+            "type": "AUTO_INT16",
+            "offset": 0
+
+        },
+        {
+            "name": "ifn",
+            "type": "AUTO_INT32",
+            "offset": 0
+
+        },
+        {
+            "name": "num_entries",
+            "type": "AUTO_INT32",
+            "offset": 0
+
+        },
+        {
+            "name": "reserved4-1",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-2",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-3",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-4",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-5",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-6",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-7",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-8",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-9",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        }
+	],
+	"name": "Ctrldata_stats-body",
+	"type": "AUTO_Struct",
+	"fields":
+	[
+		{
+			"name": "key_table_idx",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "app_id",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "msg_id",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "app_flags",
+			"type": "AUTO_UINT8",
+			"offset":0
+		},
+		{
+			"name": "info_type",
+			"type": "AUTO_UINT8",
+			"offset":0
+		},
+		{
+			"name": "flags",
+			"type": "AUTO_UINT16",
+			"offset":0
+		},
+		{
+			"name": "tran_start_time",
+			"type": "AUTO_ByteArray",
+			"offset":0
+		},
+		{
+			"name": "response_time",
+			"type": "AUTO_UINT64",
+			"offset":0
+		},
+		{
+			"name": "result_code",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "ext_type",
+			"type": "AUTO_UINT16",
+			"offset":0
+		},		
+		{
+			"name": "ext_len",
+			"type": "AUTO_UINT16",
+			"offset":0
+		},
+		{
+			"name": "ext_val_or_offset",
+			"type": "AUTO_UINT64",
+			"offset":0
+		}
+	]
+}

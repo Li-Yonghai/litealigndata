@@ -1,0 +1,78 @@
+litealigndata is a lightweight data process tool what would help user to customize data, 
+while users just need to provide seedfiles. As continuous expansion, it can customize 
+any data combination methods,as well as handle any format seedfiles.
+
+build it on UNIX/LINUX, following steps:
+
+[dependence]
+
+1. preInstall
+   sudo apt install make -y
+   sudo apt-get install pkg-config
+
+2. if the version of gcc/g++ is less than 8
+
+   spport for building parquet(arrow) on ubuntu as below steps. you could using scl 
+   Manager if work on centos.
+
+   sudo apt-get install  gcc-8  g++-8
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 10
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 20
+   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 10
+   sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 20
+   sudo update-alternatives --display g++
+   sudo update-alternatives --display gcc
+
+[build & usage]
+
+1.  get it either git clone or download from related website
+    git clone https://gitee.com/liyonghai2/litealigndata.git --recursive
+    
+2.  cd litealigndata 
+
+3.  build
+    build litealigndata
+        ./build_all.sh
+4.  litealigndata-package.tar.bz2 in current folder will generation once complete build
+
+5.  tar -xvf litealigndata-package.tar.bz2
+
+6.  cd litealigndata-package
+
+
+used following steps on UNIX/LINUX
+
+1.  get help about litealigndata tool
+
+    ./litealigndata -h
+
+
+2.  configuration xml
+
+    please Ref XML_introduction document
+
+3.  generation FILE Mode
+
+    ./litealigndata -f Example/Example.xml
+
+4.  if you need random shuffle line in character FILE
+
+    ./litealigndata -r *
+
+5.  generation STREAM Mode
+
+    server:
+        ./litealigndata -f Example/Example.xml -s
+
+    clinet:
+        cd tools/
+        ./litealigndataClient 127.0.0.1 8008
+        and then type below commd
+        get
+
+[clean]
+    ./clean_all.sh
+
+[tips]
+    updte latest code for repository
+    git pull --recurse-submodules

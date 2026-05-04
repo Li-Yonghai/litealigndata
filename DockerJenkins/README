@@ -1,0 +1,20 @@
+1. generated Docker-jenkins
+   sudo docker build -t litealigndata  .
+
+2. run litealigndata via commd
+   
+   sudo docker volume create --name litealigndata_share
+   sudo docker run -d --name share-litealigndata -p 8080:8080 -v /var/lib/docker/volumes/litealigndata/_data:/opt/registry -v /data/jenkins_home:/root/.jenkins -v /var/run/docker.sock:/var/run/docker.sock  litealigndata:latest
+
+3. generated ssh key in litealigndata Docker in order to pull code from git server
+
+   ssh-keygen -t rsa
+
+4. run litealigndata via docker-comose
+   
+   sudo docker -H unix:///var/run/docker.sock load -i imagename(from docker save) 
+
+   sudo docker-compose create
+   sudo docker-compose start
+   sudo docker-compose stop
+   sudo docker-compose restart

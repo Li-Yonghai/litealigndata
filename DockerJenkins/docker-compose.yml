@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  share-litealigndatajenkins:
+    image: litealigndatajenkins:latest 
+    restart: unless-stopped
+    privileged: true
+    user: root
+    container_name: share-litealigndatajenkins
+    volumes:
+      - /var/lib/docker/volumes/litealigndatajenkins_share/_data:/opt/registry
+      - /data/jenkins_home:/root/.jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    network_mode: bridge

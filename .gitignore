@@ -1,0 +1,14 @@
+build
+lib
+stacks/untar
+testcase/case/Ctrldata
+testcase/case/Ctrldata_output
+testcase/case/Example
+testcase/case/Example_output
+testcase/case/casemain
+testcase/case/output
+testcase/litealigndata
+third-party
+tools/litealigndataClient
+tools/litealigndataDeEncodeCtrl
+testcase/case/casemain.json

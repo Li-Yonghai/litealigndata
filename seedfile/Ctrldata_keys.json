@@ -1,0 +1,200 @@
+{
+	"version": 1.0,
+	"protocols": "Ctrldata_keys",
+	"tableid": 2,
+	"local_key_pos": "0xFFFE",
+	"head":
+	[
+        {
+            "name": "version",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+        {
+            "name": "table_id",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },        
+        {
+            "name": "entry_size",
+            "type": "AUTO_INT16",
+            "offset": 0
+
+        },
+        {
+            "name": "ifn",
+            "type": "AUTO_INT32",
+            "offset": 0
+
+        },
+        {
+            "name": "num_entries",
+            "type": "AUTO_INT32",
+            "offset": 0
+
+        },
+        {
+            "name": "reserved4-1",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-2",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-3",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-4",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-5",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-6",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-7",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-8",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        },
+		{
+            "name": "reserved4-9",
+            "type": "AUTO_INT8",
+            "offset": 0
+
+        }
+	],
+	"name": "Ctrldata_keys-body",
+	"type": "AUTO_Struct",
+	"fields":
+	[
+		{
+			"name": "index",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+        {
+			"name": "subscriber_call",
+			"type": "AUTO_Struct",
+			"offset":
+			[
+				{
+					"name": "subscriber_id",
+					"type": "AUTO_ByteArray",
+					"offset":0
+				},
+				{
+					"name": "calling_ed",
+					"type": "AUTO_Union",
+					"offset":
+					[
+						{
+							"name": "calling_party_id",
+							"type": "AUTO_ByteArray",
+							"offset":0
+						},
+						{
+							"name": "called_party_id",
+							"type": "AUTO_ByteArray",
+							"offset":0
+						}
+					]
+				}
+			]
+        },
+        {
+				"name": "ip",
+				"type": "AUTO_Union",
+				"offset":
+				[			
+		
+					{
+						"name": "ip_1",
+						"type": "AUTO_ByteArray",
+						"offset":0
+					},
+					{
+						"name": "ip_2",
+						"type": "AUTO_ByteArray",
+						"offset":0
+					}
+				]
+		},
+		{
+			"name": "node_id_1",
+			"type": "AUTO_ByteArray",
+			"offset":0
+		},
+		{
+			"name": "node_id_2",
+			"type": "AUTO_ByteArray",
+			"offset":0
+		},
+		{
+			"name": "flags",
+			"type": "AUTO_UINT16",
+			"offset":0
+		},
+		{
+			"name": "link_type",
+			"type": "AUTO_UINT8",
+			"offset":0
+		},		
+		{
+			"name": "subscriber_id_type",
+			"type": "AUTO_UINT64",
+			"offset":0
+		},
+		{
+			"name": "session_id",
+			"type": "AUTO_UINT64",
+			"offset":0
+		},
+		{
+			"name": "locationKey1",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "locationKey2",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "locationKey3",
+			"type": "AUTO_UINT32",
+			"offset":0
+		},
+		{
+			"name": "locationKey4",
+			"type": "AUTO_UINT32",
+			"offset":0
+		}
+	]
+}

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<aligndataMODEL name="aligndataMode">
+  <Interface name="litealigndata_if3">
+    <Table TableName="keys" fileNum="10" interval="5" isStream="false" name="Ctrldata_keys" rowNum="10" seedfile="Ctrldata/seedfile/Ctrldata_keys.data" seedfileReadlineOrWhole="false" tableType="Ctrldata_keys" tableid="2">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+          <Column  genFuncName="None" name="version" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="table_id" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="entry_size" type="AUTO_INT16"/>
+          <Column  genFuncName="None" name="ifn" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="num_entries" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="reserved-1" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-2" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-3" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-4" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-5" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-6" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-7" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-8" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-9" type="AUTO_INT8"/>
+        </Struct>
+      </Head>
+      <Body name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">
+          <Column genFuncName="random" name="index" type="AUTO_UINT32">
+            <parameter name="SourceType">DefaultValue</parameter>
+            <parameter name="value">1,2,3,4,5,6,7,8</parameter>  
+          </Column>
+          <Struct name="subscriber_id" type="AUTO_Struct">
+            <Column genFuncName="None" name="subscriber" type="AUTO_UINT32" union_flag="0"/>
+            <!--
+              当subscriber = 0时取calling_party_id;当subscriber = 1 时取-called_party_id
+	      union_flag默认为oxff。
+            -->
+            <Union name="calling_ed" type="AUTO_Union">
+              <Column genFuncName="None" name="calling_party_id" type="AUTO_ByteArray"/>
+              <Column genFuncName="None" name="called_party_id" type="AUTO_UINT32"/>
+            </Union>
+          </Struct>
+          <Struct name="ip" type="AUTO_Struct">
+            <Column genFuncName="None" name="ip_1" type="AUTO_ByteArray"/>
+            <Column genFuncName="None" name="ip_2" type="AUTO_UINT32"/>
+          </Struct>
+          <Column genFuncName="None" name="node_id_1" type="AUTO_ByteArray"/>
+          <Column genFuncName="None" name="node_id_2" type="AUTO_ByteArray"/>
+          <Column genFuncName="None" name="flags" type="AUTO_UINT16"/>
+          <Column  genFuncName="None" name="link_type" type="AUTO_UINT8"/>
+          <Column  genFuncName="None" name="subscriber_id_type" type="AUTO_UINT64"/>
+          <Column  genFuncName="random" name="session_id" type="AUTO_UINT64">
+                <parameter name="SourceType">DefaultValue</parameter>
+                <parameter name="value">666,777,888,999,111,22,33,44</parameter>          
+          </Column>
+          <Column genFuncName="None" name="locationKey1" type="AUTO_UINT32"/>
+          <Column genFuncName="None" name="locationKey2" type="AUTO_UINT32"/>
+          <Column genFuncName="None" name="locationKey3" type="AUTO_UINT32"/>
+          <Column genFuncName="None" name="locationKey4" type="AUTO_UINT32"/>
+        </Struct>
+      </Body>
+    </Table>
+    <Table TableName="stats" fileNum="10" interval="5" isStream="false" name="Ctrldata_stats" rowNum="10" seedfile="Ctrldata/seedfile/Ctrldata_stats.data" seedfileReadlineOrWhole="false" tableType="Ctrldata_stats" tableid="3">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+          <Column  genFuncName="None" name="version" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="table_id" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="entry_size" type="AUTO_INT16"/>
+          <Column  genFuncName="None" name="ifn" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="num_entries" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="reserved-1" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-2" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-3" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-4" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-5" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-6" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-7" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-8" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-9" type="AUTO_INT8"/>
+        </Struct>
+      </Head>
+      <Body name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">
+          <Column genFuncName="None" name="key_table_idx" type="AUTO_UINT32"/>
+          <Column genFuncName="None" name="app_id" type="AUTO_UINT32"/>
+          <Column genFuncName="random" name="msg_id" type="AUTO_UINT32">
+                <parameter name="sourcetype">table</parameter>
+                <parameter name="value">Ctrldata_keys[index]</parameter>
+          </Column>
+          <Column  genFuncName="None" name="app_flags" type="AUTO_UINT8"/>
+          <Column  genFuncName="None" name="info_type" type="AUTO_UINT8"/>
+          <Column  genFuncName="None" name="flags" type="AUTO_UINT16"/>
+          <Column  genFuncName="None" name="tran_start_time" type="AUTO_ByteArray"/>
+          <Column  genFuncName="None" name="response_time" type="AUTO_UINT64"/>
+          <Column  genFuncName="None" name="result_code" type="AUTO_UINT32"/>
+          <Column  genFuncName="None" name="ext_type" type="AUTO_UINT16"/>
+          <Column  genFuncName="None" name="ext_len" type="AUTO_UINT16"/>
+          <Column  genFuncName="None" name="ext_val_or_offset" type="AUTO_UINT64"/>
+        </Struct>
+      </Body>
+    </Table>
+  </Interface>
+  <Interface name="litealigndata_if4">
+    <Table TableName="keys" fileNum="10" interval="5" isStream="false" name="Ctrldata_keys" rowNum="10" seedfile="Ctrldata/seedfile/Ctrldata_keys.data" seedfileReadlineOrWhole="false" tableType="Ctrldata_keys" tableid="2">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+          <Column  genFuncName="None" name="version" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="table_id" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="entry_size" type="AUTO_INT16"/>
+          <Column  genFuncName="None" name="ifn" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="num_entries" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="reserved-1" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-2" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-3" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-4" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-5" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-6" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-7" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-8" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-9" type="AUTO_INT8"/>
+        </Struct>
+      </Head>
+      <Body name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">
+          <Column genFuncName="None" name="index" type="AUTO_UINT32"/>
+          <Struct name="subscriber_id" type="AUTO_Struct">
+            <Column genFuncName="None" name="subscriber" type="AUTO_UINT32"/>
+            <!--
+              当subscriber = 0时取calling_party_id;当subscriber = 1 时取-called_party_id
+            -->
+            <Union name="calling_ed" type="AUTO_Union">
+              <Column genFuncName="None" name="calling_party_id" type="AUTO_ByteArray"/>
+              <Column genFuncName="None" name="called_party_id" type="AUTO_ByteArray"/>
+            </Union>
+          </Struct>
+          <Struct name="ip" type="AUTO_Struct">
+            <Column genFuncName="None" name="ip_1" type="AUTO_ByteArray"/>
+            <Column genFuncName="None" name="ip_2" type="AUTO_UINT32"/>
+          </Struct>
+        <Column  genFuncName="None" name="node_id_1" type="AUTO_ByteArray"/>
+        <Column  genFuncName="None" name="node_id_2" type="AUTO_ByteArray"/>
+        <Column  genFuncName="None" name="flags" type="AUTO_UINT16"/>
+        <Column  genFuncName="None" name="link_type" type="AUTO_UINT8"/>
+        <Column  genFuncName="None" name="subscriber_id_type" type="AUTO_UINT64"/>
+        <Column  genFuncName="None" name="session_id" type="AUTO_UINT64"/>
+        <Column  genFuncName="None" name="locationKey1" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="locationKey2" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="locationKey3" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="locationKey4" type="AUTO_UINT32"/>
+        </Struct>
+      </Body>
+    </Table>
+    <Table TableName="stats" fileNum="10" interval="5" isStream="false" name="Ctrldata_stats" rowNum="10" seedfile="Ctrldata/seedfile/Ctrldata_stats.data" seedfileReadlineOrWhole="false" tableType="Ctrldata_stats" tableid="3">
+      <Head name="Head" type="AUTO_HEAD">
+        <Struct name="HeadData" type="AUTO_Struct">
+          <Column  genFuncName="None" name="version" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="table_id" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="entry_size" type="AUTO_INT16"/>
+          <Column  genFuncName="None" name="ifn" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="num_entries" type="AUTO_INT32"/>
+          <Column  genFuncName="None" name="reserved-1" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-2" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-3" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-4" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-5" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-6" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-7" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-8" type="AUTO_INT8"/>
+          <Column  genFuncName="None" name="reserved-9" type="AUTO_INT8"/>
+        </Struct>
+      </Head>
+      <Body  name="Body" type="AUTO_BODY">
+        <Struct name="BodyData" type="AUTO_Struct">
+        <Column  genFuncName="None" name="key_table_idx" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="app_id" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="msg_id" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="app_flags" type="AUTO_UINT8"/>
+        <Column  genFuncName="None" name="info_type" type="AUTO_UINT8"/>
+        <Column  genFuncName="None" name="flags" type="AUTO_UINT16"/>
+        <Column  genFuncName="None" name="tran_start_time" type="AUTO_ByteArray"/>
+        <Column  genFuncName="None" name="response_time" type="AUTO_UINT64"/>
+        <Column  genFuncName="None" name="result_code" type="AUTO_UINT32"/>
+        <Column  genFuncName="None" name="ext_type" type="AUTO_UINT16"/>
+        <Column  genFuncName="None" name="ext_len" type="AUTO_UINT16"/>
+        <Column  genFuncName="None" name="ext_val_or_offset" type="AUTO_UINT64"/>
+        </Struct>
+      </Body>
+    </Table>
+  </Interface>
+</aligndataMODEL>
