@@ -1,159 +1,157 @@
-
-
 # LiteAlignData
 
-LiteAlignData 是一个用于生成测试数据的 C++ 数据生成框架。该项目主要用于网络协议数据分析场景，支持多种数据格式的生成和处理。
+LiteAlignData is a C++ data generation framework designed for generating test data. This project is primarily intended for network protocol data analysis scenarios and supports the generation and processing of multiple data formats.
 
-## 项目简介
+## Project Overview
 
-LiteAlignData 是一个轻量级的数据对齐和生成工具，主要功能包括：
+LiteAlignData is a lightweight data alignment and generation tool with the following key features:
 
-- **多格式数据支持**：支持 Ctrldata、Example 等多种数据格式的解析和生成
-- **灵活的数据处理**：提供随机函数、累加函数、唯一随机函数等多种数据处理机制
-- **网络流服务**：基于 libevent 的高性能网络服务器，支持流式数据输出
-- **XML 配置**：通过 XML 配置文件定义数据结构，支持复杂的表关系和依赖
-- **维度文件支持**：支持从维度文件中读取数据并进行映射处理
+- **Multi-format Data Support**: Supports parsing and generation of multiple data formats, including Ctrldata, Example, and others
+- **Flexible Data Processing**: Provides various data processing mechanisms such as random functions, accumulator functions, and unique random functions
+- **Network Streaming Service**: A high-performance network server based on libevent, supporting streaming data output
+- **XML Configuration**: Defines data structures via XML configuration files, supporting complex table relationships and dependencies
+- **Dimension File Support**: Supports reading data from dimension files and performing mapping operations
 
-## 目录结构
+## Directory Structure
 
 ```
 litealigndata/
-├── src/                          # 源代码目录
-│   ├── com/                      # 公共组件
-│   │   ├── AlignDataTypeDef.cc   # 数据类型定义
-│   │   ├── AlignDataUtils.cc    # 工具函数
-│   │   └── Comm.cc               # 公共通信和类型映射
-│   ├── conf/                     # 配置模块
-│   │   ├── AlignConfig.cc        # 配置管理
-│   │   └── AligndataConfig.cc    # 数据配置解析
-│   ├── file/                     # 文件格式处理
-│   │   ├── BaseFileFormat.cc     # 基础文件格式
-│   │   ├── Ctrldata/              # Ctrldata 格式处理
-│   │   └── Example/                # Example 格式处理
-│   ├── fun/                      # 函数处理
-│   │   ├── BaseFuncClass.cc       # 基础函数类
-│   │   └── FunctionObject.cc      # 函数对象处理
-│   ├── log/                      # 日志模块
-│   │   └── LogHandler.cc          # 日志处理
-│   ├── stream/                   # 网络流服务
-│   │   ├── Acceptor.cc            # 连接接受器
-│   │   ├── Server.cpp              # 服务器主程序
-│   │   ├── ThreadManager.cc        # 线程管理
-│   │   └── WorkThread.cc           # 工作线程
-│   ├── struct/                   # 数据结构
-│   │   ├── AlignDataObject.cc     # 数据对象基类
-│   │   ├── ColumnObject.cc         # 列对象
-│   │   ├── TableObject.cc          # 表对象
-│   │   └── DataStructure.cc        # 数据结构定义
-│   └── main.cc                   # 主程序入口
-├── testcase/                     # 测试用例
-│   ├── case/                     # 测试案例
-│   └── apimock/                  # API 模拟
-├── tools/                        # 工具程序
-│   ├── Client/                   # 客户端工具
-│   └── DeEncode/                 # 编解码工具
-├── seedfile/                     # 种子文件
-│   ├── Ctrldata/                 # 控制数据
-│   └── Example/                  # 示例数据
-├── stacks/                       # 第三方依赖库
-│   └── tarballs/                 # 依赖包
-├── DockerBuild/                  # Docker 构建
-├── DockerJenkins/                # Jenkins Docker
-├── build_all.sh                  # 完整构建脚本
-├── build_src.sh                  # 源代码构建脚本
-└── clean_all.sh                  # 清理脚本
+├── src/                          # Source code directory
+│   ├── com/                      # Common components
+│   │   ├── AlignDataTypeDef.cc   # Data type definitions
+│   │   ├── AlignDataUtils.cc     # Utility functions
+│   │   └── Comm.cc               # Common communication and type mappings
+│   ├── conf/                     # Configuration module
+│   │   ├── AlignConfig.cc        # Configuration management
+│   │   └── AligndataConfig.cc    # Data configuration parsing
+│   ├── file/                     # File format handling
+│   │   ├── BaseFileFormat.cc     # Base file format
+│   │   ├── Ctrldata/             # Ctrldata format handling
+│   │   └── Example/              # Example format handling
+│   ├── fun/                      # Function handling
+│   │   ├── BaseFuncClass.cc      # Base function class
+│   │   └── FunctionObject.cc     # Function object handling
+│   ├── log/                      # Logging module
+│   │   └── LogHandler.cc         # Log handling
+│   ├── stream/                   # Network streaming service
+│   │   ├── Acceptor.cc           # Connection acceptor
+│   │   ├── Server.cpp            # Server main program
+│   │   ├── ThreadManager.cc      # Thread management
+│   │   └── WorkThread.cc         # Worker thread
+│   ├── struct/                   # Data structures
+│   │   ├── AlignDataObject.cc    # Data object base class
+│   │   ├── ColumnObject.cc       # Column object
+│   │   ├── TableObject.cc        # Table object
+│   │   └── DataStructure.cc      # Data structure definitions
+│   └── main.cc                   # Main program entry
+├── testcase/                     # Test cases
+│   ├── case/                     # Test scenarios
+│   └── apimock/                  # API mocking
+├── tools/                        # Utility tools
+│   ├── Client/                   # Client tool
+│   └── DeEncode/                 # Encoding/decoding tool
+├── seedfile/                     # Seed files
+│   ├── Ctrldata/                 # Control data
+│   └── Example/                  # Example data
+├── stacks/                       # Third-party dependency libraries
+│   └── tarballs/                 # Dependency packages
+├── DockerBuild/                  # Docker build configuration
+├── DockerJenkins/                # Jenkins Docker configuration
+├── build_all.sh                  # Full build script
+├── build_src.sh                  # Source code build script
+└── clean_all.sh                  # Cleanup script
 ```
 
-## 核心功能
+## Core Features
 
-### 数据类型支持
+### Data Type Support
 
-项目支持丰富的数据类型，包括：
-- 整型：UINT64, INT64, UINT32, INT32, UINT16, INT16, UINT8, INT8
-- 网络类型：IPv4, IPv6, IPv4V6, IPv4_NET, IPv6_NET
-- 字符串：STRING, ByteArray
-- 时间类型：DateTime, RealTime, RealTime_ms, TIMEVAL
-- 特殊编码：BCD, IMSIBCD, IMEISV_BCD, SP_U8_4, SP_IPV6
+The project supports a rich set of data types, including:
+- Integer types: UINT64, INT64, UINT32, INT32, UINT16, INT16, UINT8, INT8
+- Network types: IPv4, IPv6, IPv4V6, IPv4_NET, IPv6_NET
+- String types: STRING, ByteArray
+- Time types: DateTime, RealTime, RealTime_ms, TIMEVAL
+- Special encodings: BCD, IMSIBCD, IMEISV_BCD, SP_U8_4, SP_IPV6
 
-### 函数处理
+### Function Processing
 
-- **RandomFunc**：随机数据生成，支持多种随机模式
-- **AcculateFunc**：累加计算函数
-- **MergeFunc**：数据合并函数
-- **UniqueRandomFunc**：唯一随机数生成
-- **fileReaderFunc**：文件读取函数
+- **RandomFunc**: Generates random data with multiple randomization modes
+- **AcculateFunc**: Accumulation calculation function
+- **MergeFunc**: Data merging function
+- **UniqueRandomFunc**: Generates unique random numbers
+- **fileReaderFunc**: Reads data from files
 
-### 网络服务
+### Network Service
 
-基于 libevent 实现的高性能服务器，支持：
-- TCP 连接管理
-- 心跳检测
-- 流式数据输出
-- 多线程处理
+A high-performance server implemented using libevent, supporting:
+- TCP connection management
+- Heartbeat detection
+- Streaming data output
+- Multi-threaded processing
 
-## 构建要求
+## Build Requirements
 
-- C++ 编译器 (GCC 7.0+)
+- C++ compiler (GCC 7.0+)
 - CMake 3.26+
 - ACE 7.1.0
 - libevent 2.1.12
 - Xerces-C 3.1.4
 - Boost 1.64.0
-- 其他依赖库（见 stacks/tarballs/）
+- Other dependencies (see stacks/tarballs/)
 
-## 快速开始
+## Quick Start
 
-### 1. 构建项目
+### 1. Build the Project
 
-请参考INSTALL
+see INSTALL pls.
 
-### 2. 运行程序
+### 2. Run the Program
 
-请参考INSTALL
+see INSTALL pls.
 
-### 3. 客户端连接
+### 3. Connect with Client
 
-请参考INSTALL
+see INSTALL pls.
 
-## 配置说明
+## Configuration Details
 
-### XML 配置文件
+### XML Configuration File
 
-项目使用 XML 文件定义数据结构，包括：
-- 表定义 (Table)
-- 列定义 (Column)
-- 函数定义 (Function)
-- 依赖关系 (Dependency)
+The project uses XML files to define data structures, including:
+- Table definitions (Table)
+- Column definitions (Column)
+- Function definitions (Function)
+- Dependencies (Dependency)
 
-## Docker 部署
+## Docker Deployment
 
-### 构建镜像
+### Build the Image
 
 ```bash
 cd DockerBuild
 ./build.sh
 ```
 
-### 运行 Jenkins 服务
+### Run Jenkins Service
 
 ```bash
 cd DockerJenkins
 docker-compose up
 ```
 
-## 测试
+## Testing
 
-项目包含完整的测试用例框架：
+The project includes a comprehensive test framework:
 
 ```bash
 cd testcase/case
 ./casemain
 ```
 
-## 许可证
+## License
 
-本项目的详细信息请查看 LICENSE 文件。
+For detailed licensing information, please refer to the LICENSE file.
 
-## 贡献
+## Contributions
 
-欢迎提交 Issue 和 Pull Request。
+Issues and pull requests are welcome.
